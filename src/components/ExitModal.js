@@ -11,7 +11,7 @@ import {Colors} from '../constants/colors';
 import {LG_SPACE, MD_FONT, MD_SPACE} from '../constants/metrics';
 import TextButton from './TextButton';
 
-export default function ErrorModal({title, message, visible, onClose}) {
+export default function ExitModal({visible, onClose, onConfirmExit}) {
   return (
     <Modal
       animationType="fade"
@@ -23,11 +23,17 @@ export default function ErrorModal({title, message, visible, onClose}) {
           <ScrollView
             style={styles.container}
             contentContainerStyle={styles.contentContainer}>
-            <Text style={styles.title}>{title}</Text>
-            <Text>{message}</Text>
-            <TextButton onPress={onClose} style={styles.button} dark>
-              OK
-            </TextButton>
+            <Text style={styles.title}>Sair</Text>
+            <View style={styles.divider}></View>
+            <Text>Tem certeza que deseja sair?</Text>
+            <View style={styles.buttonsContainer}>
+              <TextButton onPress={onClose} style={styles.button} dark>
+                Cancelar
+              </TextButton>
+              <TextButton onPress={onConfirmExit} style={styles.button} dark>
+                Sim, desejo sair
+              </TextButton>
+            </View>
           </ScrollView>
         </View>
       </Pressable>
@@ -42,7 +48,7 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     justifyContent: 'center',
     flex: 1,
-    backgroundColor: '#00000030',
+    backgroundColor: Colors.darkOpacity,
   },
   container: {
     backgroundColor: Colors.white,
@@ -55,6 +61,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: MD_SPACE,
     fontSize: MD_FONT,
+  },
+  divider: {
+    height: 1,
+    marginBottom: MD_SPACE,
+    backgroundColor: Colors.darkOpacity,
+  },
+  buttonsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
   },
   button: {
     alignSelf: 'flex-end',

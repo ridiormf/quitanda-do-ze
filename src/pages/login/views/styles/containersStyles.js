@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Colors} from '../../../../constants/colors';
+import {LG_SPACE} from '../../../../constants/metrics';
 
 export const loginContainerStyles = StyleSheet.create({
   container: {
@@ -19,6 +20,6 @@ export const loginContainerStyles = StyleSheet.create({
     borderRadius: 8,
     elevation: 10,
     marginVertical: 8,
-    paddingHorizontal: 24,
+    paddingHorizontal: LG_SPACE,
   },
 });

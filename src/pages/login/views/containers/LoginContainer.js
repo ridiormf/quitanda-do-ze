@@ -1,6 +1,6 @@
 import React from 'react';
 import {ScrollView, TextInput} from 'react-native';
-import ReactLogo from '../../../../assets/react-logo.svg';
+import ReactLogo from '../../../../assets/logos/react-logo.svg';
 import Button from '../../../../components/Button';
 import ErrorModal from '../../../../components/ErrorModal';
 import {useLoginMount} from '../../controllers/loginControllers';

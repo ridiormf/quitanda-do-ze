@@ -1,4 +1,5 @@
 import React from 'react';
+import {AuthenticationContext} from '../../../contexts/AuthenticationContext';
 import {login} from '../../../services/requests/login';
 
 export const useLoginMount = () => {
@@ -7,12 +8,17 @@ export const useLoginMount = () => {
   const [errorMessage, setErrorMessage] = React.useState(null);
   const [loading, setLoading] = React.useState(false);
 
+  const [, {setAuthentication}] = React.useContext(AuthenticationContext);
+
   const onSubmitLogin = React.useCallback(async () => {
     setLoading(true);
-    const error = await login(username, password);
+    const {error, auth} = await login(username, password);
     setLoading(false);
     setErrorMessage(error);
-  }, [username, password]);
+    if (!error) {
+      setAuthentication(auth);
+    }
+  }, [username, password, setAuthentication]);
 
   const onModalClose = () => setErrorMessage(null);
 

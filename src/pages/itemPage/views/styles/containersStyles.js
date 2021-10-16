@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {Colors} from '../../../../constants/colors';
+import {LG_SPACE, MD_FONT} from '../../../../constants/metrics';
 
 export const loginContainerStyles = StyleSheet.create({
   container: {
@@ -19,20 +20,20 @@ export const loginContainerStyles = StyleSheet.create({
     borderRadius: 8,
     elevation: 10,
     marginVertical: 8,
-    paddingHorizontal: 24,
+    paddingHorizontal: LG_SPACE,
   },
   button: {
     backgroundColor: Colors.white,
     padding: 14,
     borderRadius: 8,
     elevation: 10,
-    marginTop: 24,
+    marginTop: LG_SPACE,
     alignItems: 'center',
     alignSelf: 'stretch',
   },
   buttonText: {
     color: '#4ab2e3',
-    fontSize: 15,
+    fontSize: MD_FONT,
     fontWeight: 'bold',
   },
 });
