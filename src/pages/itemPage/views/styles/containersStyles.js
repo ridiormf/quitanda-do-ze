@@ -1,39 +1,74 @@
 import {StyleSheet} from 'react-native';
 import {Colors} from '../../../../constants/colors';
-import {LG_SPACE, MD_FONT} from '../../../../constants/metrics';
+import {
+  LG_FONT,
+  LG_SPACE,
+  MD_SPACE,
+  SM_SPACE,
+  XL_FONT,
+  XL_SPACE,
+} from '../../../../constants/metrics';
 
-export const loginContainerStyles = StyleSheet.create({
+const HEADER_SIZE = 200;
+
+export const itemPageContainerStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.mainBlue,
+    backgroundColor: Colors.background,
+  },
+
+  img: {
+    height: HEADER_SIZE,
+    alignSelf: 'stretch',
+    position: 'absolute',
+  },
+
+  imgInfos: {
+    padding: LG_SPACE,
+    height: HEADER_SIZE,
+    alignSelf: 'stretch',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    backgroundColor: Colors.darkOpacity,
+  },
+  iconButton: {
+    position: 'absolute',
+    top: MD_SPACE,
+    left: MD_SPACE,
+  },
+  title: {
+    fontSize: XL_FONT,
+    color: Colors.white,
+    textShadowColor: Colors.darkerOpacity,
+    textShadowOffset: {width: 2, height: 2},
+    textShadowRadius: 2,
   },
   contentContainer: {
     flexGrow: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 32,
+    paddingHorizontal: LG_SPACE,
+    paddingBottom: XL_SPACE,
   },
 
-  input: {
-    backgroundColor: Colors.white,
-    alignSelf: 'stretch',
-    borderRadius: 8,
-    elevation: 10,
-    marginVertical: 8,
-    paddingHorizontal: LG_SPACE,
+  contentRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-around',
   },
-  button: {
-    backgroundColor: Colors.white,
-    padding: 14,
-    borderRadius: 8,
-    elevation: 10,
-    marginTop: LG_SPACE,
+  content: {
     alignItems: 'center',
-    alignSelf: 'stretch',
   },
-  buttonText: {
-    color: '#4ab2e3',
-    fontSize: MD_FONT,
-    fontWeight: 'bold',
+
+  contentTitle: {
+    fontSize: LG_FONT,
+    marginTop: XL_SPACE,
+    marginBottom: SM_SPACE,
+    color: Colors.text,
+  },
+  cartButton: {
+    backgroundColor: Colors.black,
+    position: 'absolute',
+    bottom: LG_SPACE,
+    right: LG_SPACE,
+    elevation: 5,
   },
 });

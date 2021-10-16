@@ -15,7 +15,9 @@ import {searchListContainerStyles as styles} from '../styles/containersStyles';
 import SearchIcon from '../../../../assets/icons/search-icon.svg';
 import {Colors} from '../../../../constants/colors';
 import ErrorModal from '../../../../components/ErrorModal';
-export default function SearchListContainer() {
+import {PAGES} from '../../../../constants/keys';
+
+export default function SearchListContainer({navigation}) {
   const {
     search,
     setSearch,
@@ -88,12 +90,15 @@ export default function SearchListContainer() {
                 <ActivityIndicator size={30} color={Colors.white} />
               </View>
             ) : (
-              products.map(item => (
+              products.map(product => (
                 <ProductItem
-                  key={item.id}
-                  value={`R$ ${item.price}`}
-                  img={item.img}>
-                  {item.name}
+                  key={product.id}
+                  value={`R$ ${product.price}`}
+                  img={product.img}
+                  onPress={() =>
+                    navigation.navigate(PAGES.PROTECTED.ITEM_PAGE, product)
+                  }>
+                  {product.name}
                 </ProductItem>
               ))
             )}

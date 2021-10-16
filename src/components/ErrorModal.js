@@ -24,6 +24,7 @@ export default function ErrorModal({title, message, visible, onClose}) {
             style={styles.container}
             contentContainerStyle={styles.contentContainer}>
             <Text style={styles.title}>{title}</Text>
+            <View style={styles.divider}></View>
             <Text>{message}</Text>
             <TextButton onPress={onClose} style={styles.button} dark>
               OK
@@ -55,6 +56,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: MD_SPACE,
     fontSize: MD_FONT,
+  },
+  divider: {
+    height: 1,
+    marginBottom: MD_SPACE,
+    backgroundColor: Colors.darkOpacity,
   },
   button: {
     alignSelf: 'flex-end',

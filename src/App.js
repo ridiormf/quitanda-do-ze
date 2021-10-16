@@ -1,4 +1,6 @@
 import React from 'react';
+import {StatusBar} from 'react-native';
+import {Colors} from './constants/colors';
 import AuthenticationProvider from './contexts/AuthenticationContext';
 import NavigationStack from './navigation/NavigationStack';
 
@@ -11,6 +13,7 @@ const App = () => {
 
   return (
     <AuthenticationProvider>
+      <StatusBar backgroundColor={Colors.mainBlue} />
       <NavigationStack />
     </AuthenticationProvider>
   );

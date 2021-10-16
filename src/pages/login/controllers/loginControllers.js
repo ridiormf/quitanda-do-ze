@@ -11,6 +11,10 @@ export const useLoginMount = () => {
   const [, {setAuthentication}] = React.useContext(AuthenticationContext);
 
   const onSubmitLogin = React.useCallback(async () => {
+    if (!username || !password) {
+      setErrorMessage('Preencha seu email e senha antes de prosseguir.');
+      return;
+    }
     setLoading(true);
     const {error, auth} = await login(username, password);
     setLoading(false);

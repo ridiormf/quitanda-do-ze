@@ -10,6 +10,7 @@ export default function HomeProvider({children}) {
   const [categories, setCategories] = React.useState([]);
   const [loadingCategories, setLoadingCategories] = React.useState(true);
   const [categoriesError, setCategoriesError] = React.useState(null);
+
   const [products, setProducts] = React.useState([]);
   const [loadingProducts, setLoadingProducts] = React.useState(true);
   const [productsError, setProductsError] = React.useState(null);
@@ -53,6 +54,7 @@ export default function HomeProvider({children}) {
 
   React.useEffect(() => {
     getLists();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   React.useEffect(() => debounce(() => getListProducts(search)), [search]);
