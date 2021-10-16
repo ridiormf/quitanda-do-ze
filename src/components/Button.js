@@ -17,7 +17,7 @@ export default function Button({loading, onPress, children, dark, style = {}}) {
         backgroundColor: dark ? Colors.mainBlue : Colors.white,
       }}
       activeOpacity={0.8}
-      onPress={onPress}>
+      onPress={loading ? null : onPress}>
       <Text
         style={{
           ...styles.buttonText,

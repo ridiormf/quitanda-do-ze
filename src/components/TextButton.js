@@ -22,7 +22,7 @@ export default function TextButton({
         ...style,
       }}
       activeOpacity={0.8}
-      onPress={onPress}>
+      onPress={loading ? null : onPress}>
       <Text
         style={{
           ...styles.buttonText,

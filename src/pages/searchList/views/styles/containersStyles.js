@@ -1,26 +1,72 @@
 import {StyleSheet} from 'react-native';
 import {Colors} from '../../../../constants/colors';
-import {LG_SPACE, MD_FONT} from '../../../../constants/metrics';
+import {
+  LG_FONT,
+  LG_SPACE,
+  MD_FONT,
+  MD_SPACE,
+} from '../../../../constants/metrics';
 
-export const loginContainerStyles = StyleSheet.create({
+export const searchListContainerStyles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.mainBlue,
+    backgroundColor: Colors.background,
   },
   contentContainer: {
     flexGrow: 1,
+    padding: LG_SPACE,
+  },
+  categoriesContainer: {
+    marginHorizontal: -LG_SPACE,
+    marginBottom: LG_SPACE,
+  },
+  categoriesContentContainer: {
+    paddingHorizontal: MD_SPACE,
+    flexDirection: 'row',
+  },
+  categoriesTitle: {
+    fontSize: LG_FONT,
+    color: Colors.mainBlue,
+    marginBottom: MD_SPACE,
+  },
+  productsContainer: {
     alignItems: 'center',
-    justifyContent: 'center',
-    padding: 32,
+    marginTop: LG_SPACE,
+    marginHorizontal: -LG_SPACE,
+    paddingHorizontal: LG_SPACE,
+    paddingVertical: MD_SPACE,
+    marginBottom: -LG_SPACE,
+    backgroundColor: Colors.mainBlue,
+    flexGrow: 1,
+    borderTopEndRadius: 50,
+    borderTopStartRadius: 50,
+  },
+  productsTitle: {
+    fontSize: LG_FONT,
+    color: Colors.white,
+    marginBottom: MD_SPACE,
+    alignSelf: 'center',
+  },
+  productsItemsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
   },
 
-  input: {
+  inputContainer: {
     backgroundColor: Colors.white,
     alignSelf: 'stretch',
-    borderRadius: 8,
-    elevation: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 12,
+    borderColor: Colors.gray,
+    borderWidth: 1,
     marginVertical: 8,
-    paddingHorizontal: LG_SPACE,
+    paddingRight: LG_SPACE,
+    paddingLeft: MD_SPACE,
+  },
+  input: {
+    flex: 1,
   },
   button: {
     backgroundColor: Colors.white,
