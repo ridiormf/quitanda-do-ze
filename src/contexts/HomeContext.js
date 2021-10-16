@@ -57,24 +57,16 @@ export default function HomeProvider({children}) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  React.useEffect(() => debounce(() => getListProducts(search)), [search]);
-
   const clearErrorMessage = () => {
     setCategoriesError(null);
     setProductsError(null);
   };
 
   const filteredProducts = React.useMemo(() => {
-    let productsToFilter = Array.isArray(products)
-      ? products
-      : Object.values(products);
-
     if (filterCategory) {
-      return productsToFilter.filter(
-        product => product.category_id === filterCategory,
-      );
+      return products.filter(product => product.category_id === filterCategory);
     }
-    return productsToFilter;
+    return products;
   }, [filterCategory, products]);
   return (
     <HomeContext.Provider
@@ -96,6 +88,7 @@ export default function HomeProvider({children}) {
           clearErrorMessage,
           setFilterCategory,
           setSearch,
+          searchProducts: searchString => getListProducts(searchString),
         },
       ]}>
       {children}

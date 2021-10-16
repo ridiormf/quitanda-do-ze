@@ -16,6 +16,7 @@ import SearchIcon from '../../../../assets/icons/search-icon.svg';
 import {Colors} from '../../../../constants/colors';
 import ErrorModal from '../../../../components/ErrorModal';
 import {PAGES} from '../../../../constants/keys';
+import debounce from '../../../../utils/debounce';
 
 export default function SearchListContainer({navigation}) {
   const {
@@ -30,6 +31,7 @@ export default function SearchListContainer({navigation}) {
     setFilterCategory,
     filterCategory,
     onRefresh,
+    searchProducts,
   } = useSearchListMount();
   return (
     <>
@@ -79,7 +81,10 @@ export default function SearchListContainer({navigation}) {
             inlineImageLeft="search_icon"
             value={search}
             style={styles.input}
-            onChangeText={setSearch}
+            onChangeText={value => {
+              setSearch(value);
+              debounce(() => searchProducts(value));
+            }}
           />
         </View>
         <View style={styles.productsContainer}>

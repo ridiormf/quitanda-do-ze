@@ -7,5 +7,5 @@ export const searchProduct = async search => {
   } else if (response?.status !== 200) {
     return {error: 'Houve algum erro ao tentar se conectar com o servidor.'};
   }
-  return {error: null, products: response.data};
+  return {error: null, products: Object.values(response.data)};
 };

@@ -13,25 +13,14 @@ export const useSearchListMount = () => {
       filterCategory,
       search,
     },
-    {clearErrorMessage, setFilterCategory, onRefresh, setSearch},
+    {
+      clearErrorMessage,
+      setFilterCategory,
+      onRefresh,
+      setSearch,
+      searchProducts,
+    },
   ] = React.useContext(HomeContext);
-  //   const [password, setPassword] = React.useState('');
-  //   const [errorMessage, setErrorMessage] = React.useState(null);
-  //   const [loading, setLoading] = React.useState(false);
-
-  //   const [, {setAuthentication}] = React.useContext(AuthenticationContext);
-
-  //   const onSubmitLogin = React.useCallback(async () => {
-  //     setLoading(true);
-  //     const {error, auth} = await login(username, password);
-  //     setLoading(false);
-  //     setErrorMessage(error);
-  //     if (!error) {
-  //       setAuthentication(auth);
-  //     }
-  //   }, [username, password, setAuthentication]);
-
-  //   const onModalClose = () => setErrorMessage(null);
 
   const errorMessage = React.useMemo(() => {
     let result = '';
@@ -60,5 +49,6 @@ export const useSearchListMount = () => {
     setFilterCategory,
     filterCategory,
     onRefresh,
+    searchProducts,
   };
 };
