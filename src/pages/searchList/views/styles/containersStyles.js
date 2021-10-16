@@ -16,6 +16,13 @@ export const searchListContainerStyles = StyleSheet.create({
     flexGrow: 1,
     padding: LG_SPACE,
   },
+  categoriesLoadingContainer: {
+    height: 110,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+    alignSelf: 'stretch',
+  },
   categoriesContainer: {
     marginHorizontal: -LG_SPACE,
     marginBottom: LG_SPACE,
@@ -50,7 +57,15 @@ export const searchListContainerStyles = StyleSheet.create({
   productsItemsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignSelf: 'stretch',
     flexWrap: 'wrap',
+    flexGrow: 1,
+  },
+  productsLoadingContainer: {
+    alignSelf: 'stretch',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   inputContainer: {

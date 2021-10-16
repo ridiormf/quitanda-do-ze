@@ -1,13 +1,10 @@
-import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import LoginContainer from '../pages/login/views/containers/LoginContainer';
-import SearchListContainer from '../pages/searchList/views/containers/SearchListContainer';
-import ItemPageContainer from '../pages/itemPage/views/containers/ItemPageContainer';
+import {NavigationContainer} from '@react-navigation/native';
 import {AuthenticationContext} from '../contexts/AuthenticationContext';
 import FullLoading from '../components/FullLoading';
-
-const Stack = createNativeStackNavigator();
+import PublicStack from './PublicStack';
+import ProtectedStack from './ProtectedStack';
+import HomeProvider from '../contexts/HomeContext';
 
 const NavigationStack = () => {
   const [{auth, mounting}] = React.useContext(AuthenticationContext);
@@ -15,28 +12,13 @@ const NavigationStack = () => {
     <>
       {mounting ? null : (
         <NavigationContainer>
-          <Stack.Navigator initialRouteName={auth ? 'SearchList' : 'Login'}>
-            {!auth ? (
-              <Stack.Screen
-                name="Login"
-                component={LoginContainer}
-                options={{headerShown: false}}
-              />
-            ) : (
-              <>
-                <Stack.Screen
-                  name="SearchList"
-                  component={SearchListContainer}
-                  options={{headerShown: false}}
-                />
-                <Stack.Screen
-                  name="ItemPage"
-                  component={ItemPageContainer}
-                  options={{headerShown: false}}
-                />
-              </>
-            )}
-          </Stack.Navigator>
+          {!auth ? (
+            <PublicStack />
+          ) : (
+            <HomeProvider>
+              <ProtectedStack />
+            </HomeProvider>
+          )}
         </NavigationContainer>
       )}
       <FullLoading visible={mounting} />

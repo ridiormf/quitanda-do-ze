@@ -1,7 +1,20 @@
 import React from 'react';
+import {HomeContext} from '../../../contexts/HomeContext';
 
 export const useSearchListMount = () => {
-  const [search, setSearch] = React.useState('');
+  const [
+    {
+      categories,
+      loadingCategories,
+      categoriesError,
+      products,
+      loadingProducts,
+      productsError,
+      filterCategory,
+      search,
+    },
+    {clearErrorMessage, setFilterCategory, onRefresh, setSearch},
+  ] = React.useContext(HomeContext);
   //   const [password, setPassword] = React.useState('');
   //   const [errorMessage, setErrorMessage] = React.useState(null);
   //   const [loading, setLoading] = React.useState(false);
@@ -20,14 +33,32 @@ export const useSearchListMount = () => {
 
   //   const onModalClose = () => setErrorMessage(null);
 
+  const errorMessage = React.useMemo(() => {
+    let result = '';
+    if (categoriesError) {
+      result = categoriesError;
+    }
+    if (productsError) {
+      if (result) {
+        result += `\n\n${productsError}`;
+      } else {
+        result = productsError;
+      }
+    }
+    return result;
+  }, [categoriesError, productsError]);
+
   return {
     search,
     setSearch,
-    // errorMessage,
-    // loading,
-    // setUsername,
-    // setPassword,
-    // onModalClose,
-    // onSubmitLogin,
+    errorMessage,
+    clearErrorMessage,
+    categories,
+    loadingCategories,
+    products,
+    loadingProducts,
+    setFilterCategory,
+    filterCategory,
+    onRefresh,
   };
 };

@@ -4,9 +4,11 @@ import {
   Text,
   TouchableOpacity,
   useWindowDimensions,
+  Image,
+  View,
 } from 'react-native';
 import {Colors} from '../../../../constants/colors';
-import {LG_SPACE, MD_SPACE} from '../../../../constants/metrics';
+import {MD_SPACE} from '../../../../constants/metrics';
 
 export default function ProductItem({onPress, children, value, img}) {
   const {width: screenWidth} = useWindowDimensions();
@@ -19,20 +21,33 @@ export default function ProductItem({onPress, children, value, img}) {
       style={{...styles.container, width: size, height: size}}
       activeOpacity={0.8}
       onPress={onPress}>
-      <Text style={styles.text}>{children}</Text>
-      <Text style={styles.value}>{value}</Text>
+      <Image
+        style={styles.img}
+        source={{
+          uri: img,
+        }}
+      />
+      <View style={styles.contentContainer}>
+        <Text style={styles.text}>{children}</Text>
+        <Text style={styles.value}>{value}</Text>
+      </View>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: 8,
     marginVertical: MD_SPACE,
     borderRadius: 16,
     backgroundColor: '#202020',
+    overflow: 'hidden',
+  },
+  contentContainer: {
+    padding: 8,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flex: 1,
+    alignSelf: 'stretch',
   },
   text: {
     color: Colors.white,
@@ -40,5 +55,10 @@ const styles = StyleSheet.create({
   value: {
     color: Colors.white,
     alignSelf: 'flex-end',
+  },
+  img: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
   },
 });
